@@ -1,2 +1,1 @@
-# JS-training-yutayamane
-カーセンサーのJavaScriptの実装例
+JavaScriptの実装例
