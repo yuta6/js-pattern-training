@@ -33,6 +33,22 @@
             <h2>モーダル</h2>
             <p>モーダルウィンドウの説明と実装例。</p>
             <!-- モーダルのデモとコード -->
+            <!-- モーダルを開くためのボタン -->
+            <button type="button" class="modal__trigger" data-modal-trigger="#modal-demo">
+                ドキドキの扉はこちら！
+            </button>
+
+            <!-- モーダル本体 -->
+            <div class="modal" data-modal id="modal-demo">
+                <div class="modal__container">
+                <div class="modal__overlay" data-modal-close></div>
+                <div class="modal__content">
+                    <button type="button" class="modal__close" data-modal-close>&times;</button>
+                    <h3 class="modal__title">ここから物語が始まる…！？</h3>
+                    <p class="modal__text">…でも実は、この先に秘密が隠されているとかいないとか。</p>
+                </div>
+                </div>
+            </div>
         </section>
 
         <section id="tab">
