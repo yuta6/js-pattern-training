@@ -1,0 +1,24 @@
+name: PR Preview Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. リポジトリのコードをチェックアウト
+      - uses: actions/checkout@v3
+
+      # 2. peaceiris/actions-gh-pages アクションで gh-pages ブランチから
+      #    対応するサブディレクトリ（例: pr-<PR番号>）を削除する
+      - name: Remove preview from GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          destination_dir: pr-${{ github.event.pull_request.number }}
+          # allow_empty_commit を true にすると、削除のみのコミットでもエラーとならない
+          allow_empty_commit: true
+          commit_message: "Remove preview for PR #${{ github.event.pull_request.number }}"
