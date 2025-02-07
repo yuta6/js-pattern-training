@@ -1,10 +1,9 @@
-// アコーディオンコンテナ全体の余白
-.accordion__container {
+.accordion {
+  &__container {
     margin: 1.5rem 0;
   }
 
-  // 各アコーディオン項目の基本スタイル
-  .accordion__item {
+  &__item {
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 1rem;
@@ -14,11 +13,19 @@
 
     &[open] {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      // open時のアコーディオン内容と summary アイコンの調整
+      .accordion__content {
+        padding: 1rem;
+        max-height: 500px;
+      }
+      .accordion__summary::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
     }
   }
 
-  // summary 部分のスタイル（タイトル部分）
-  .accordion__summary {
+  &__summary {
     list-style: none;
     padding: 1rem;
     cursor: pointer;
@@ -32,7 +39,6 @@
       background-color: #ececec;
     }
 
-    // 右側のアイコン（▼）を配置
     &::after {
       content: '▼';
       position: absolute;
@@ -43,22 +49,11 @@
     }
   }
 
-  // アコーディオンが開いているときのアイコンの向き変更
-  .accordion__item[open] .accordion__summary::after {
-    transform: translateY(-50%) rotate(180deg);
-  }
-
-  // 詳細内容部分のスタイル
-  .accordion__content {
+  &__content {
     padding: 0 1rem;
     background-color: #fff;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease;
   }
-
-  // details 要素の open 属性に合わせたアニメーション
-  .accordion__item[open] .accordion__content {
-    padding: 1rem;
-    max-height: 500px;
-  }
+}
