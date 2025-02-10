@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Title</title>
-  <script type="module" crossorigin src="./assets/index-CM2P-Euu.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-tYDygZjk.css">
+  <script type="module" crossorigin src="./assets/index-CDHW3lZD.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-UuqXnc0-.css">
 </head>
 <body>
     <header>
@@ -41,11 +41,16 @@
             <p>タブの説明と実装例。</p>
             <!-- タブのデモとコード -->
             <div class="tab" data-tab>
-                <ul class="tab__nav" data-tab-nav>
-                    <li class="tab__item tab__item--active" data-tab-item data-tab-target="panel1">冒険の始まり</li>
-                    <li class="tab__item" data-tab-item data-tab-target="panel2">笑いの大冒険</li>
-                    <li class="tab__item" data-tab-item data-tab-target="panel3">秘密の宝箱</li>
-                </ul>
+                <!-- タブナビゲーションラッパー -->
+                <div class="tab__nav-wrapper" data-tab-nav>
+                    <ul class="tab__nav">
+                        <li class="tab__item tab__item--active" data-tab-item data-tab-target="panel1">冒険の始まり</li>
+                        <li class="tab__item" data-tab-item data-tab-target="panel2">笑いの大冒険</li>
+                        <li class="tab__item" data-tab-item data-tab-target="panel3">秘密の宝箱</li>
+                    </ul>
+                    <!-- アンダーラインの要素 -->
+                    <div class="tab__underline"></div>
+                </div>
                 <div class="tab__content">
                     <div class="tab__panel tab__panel--active" data-tab-panel="panel1">
                         <p>ようこそ、冒険の始まりへ！ここでは日常が魔法に変わる瞬間を体験できます。あなたの好奇心が扉を開ける鍵です。</p>
