@@ -45,6 +45,34 @@
             <h2>カルーセル</h2>
             <p>カルーセルの説明と実装例。</p>
             <!-- カルーセルのデモとコード -->
+            <div class="carousel" data-carousel>
+                <!-- ビューポート：スライドを横並びに配置 -->
+                <div class="carousel__viewport">
+                    <div class="carousel__slide" data-carousel-slide>
+                        <img src="img/shoyu_ramen.jpg" alt="shoyu_ramen" width="500" height="300" class="carousel__image">
+                    </div>
+                    <div class="carousel__slide" data-carousel-slide>
+                        <img src="img/miso_ramen.jpg" alt="miso_ramen" width="500" height="300" class="carousel__image">
+                    </div>
+                    <div class="carousel__slide" data-carousel-slide>
+                        <img src="img/shio_ramen.jpg" alt="shio_ramen" width="500" height="300" class="carousel__image">
+                    </div>
+                    <div class="carousel__slide" data-carousel-slide>
+                        <img src="img/tonkotsu_ramen.jpg" alt="tonkotsu_ramen" width="500" height="300" class="carousel__image">
+                    </div>
+                    <div class="carousel__slide" data-carousel-slide>
+                        <img src="img/tsukemen.jpg" alt="tsukemen" width="500" height="300" class="carousel__image">
+                    </div>
+                </div>
+
+                <!-- 前・次のボタン -->
+                <button class="carousel__button carousel__button--prev" data-carousel-button="prev">
+                    <span class="visually-hidden">前へ</span>
+                </button>
+                <button class="carousel__button carousel__button--next" data-carousel-button="next">
+                    <span class="visually-hidden">次へ</span>
+                </button>
+            </div>
         </section>
 
         <section id="dropdown">
