@@ -7,6 +7,10 @@ on:
 jobs:
   cleanup:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
     steps:
       # 1. リポジトリのコードをチェックアウト
       - uses: actions/checkout@v3
