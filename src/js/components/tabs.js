@@ -1,25 +1,50 @@
 export const tabs = () => {
-    const tabContainer = document.querySelector('[data-tab]');
+    const tabContainer = document.querySelector("[data-tab]");
     if (!tabContainer) return;
 
-    const tabItems = tabContainer.querySelectorAll('[data-tab-item]');
-    const tabPanels = tabContainer.querySelectorAll('[data-tab-panel]');
+    // タブナビゲーションラッパー（アンダーラインの親要素）
+    const navWrapper = tabContainer.querySelector("[data-tab-nav]");
+    const tabItems = tabContainer.querySelectorAll("[data-tab-item]");
+    const tabPanels = tabContainer.querySelectorAll("[data-tab-panel]");
+    const underline = tabContainer.querySelector(".tab__underline");
 
-    tabItems.forEach(item => {
-        item.addEventListener('click', () => {
-            tabItems.forEach(tabItem => tabItem.classList.remove('tab__item--active'));
-            // クリックされたタブに active クラスを付与
-            item.classList.add('tab__item--active');
+    // アンダーラインの位置・幅を更新する関数
+    const updateUnderline = () => {
+        const activeTab = tabContainer.querySelector(".tab__item--active");
+        if (!activeTab || !underline) return;
+        const navRect = navWrapper.getBoundingClientRect();
+        const activeRect = activeTab.getBoundingClientRect();
+        const left = activeRect.left - navRect.left;
+        const width = activeRect.width;
+        underline.style.left = left + "px";
+        underline.style.width = width + "px";
+    };
 
-            const target = item.getAttribute('data-tab-target');
+    // 初期位置を設定
+    updateUnderline();
+    // ウィンドウリサイズ時にも更新
+    window.addEventListener("resize", updateUnderline);
 
-            // すべてのパネルから active クラスを削除
-            tabPanels.forEach(panel => panel.classList.remove('tab__panel--active'));
-            // 対応するパネルを表示
-            const targetPanel = tabContainer.querySelector(`[data-tab-panel="${target}"]`);
+    tabItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            // すべてのタブから active クラスを削除し、クリックされたタブに付与
+            tabItems.forEach((i) => i.classList.remove("tab__item--active"));
+            item.classList.add("tab__item--active");
+
+            // 対応するパネルの表示切替
+            const target = item.getAttribute("data-tab-target");
+            tabPanels.forEach((panel) =>
+                panel.classList.remove("tab__panel--active")
+            );
+            const targetPanel = tabContainer.querySelector(
+                `[data-tab-panel="${target}"]`
+            );
             if (targetPanel) {
-                targetPanel.classList.add('tab__panel--active');
+                targetPanel.classList.add("tab__panel--active");
             }
+
+            // アンダーラインの位置を更新（アニメーションで移動）
+            updateUnderline();
         });
     });
-}
+};

@@ -2,39 +2,47 @@
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
+    // タブナビゲーション全体を包含するラッパー
+    &__nav-wrapper {
+        position: relative;
+    }
+
     &__nav {
         display: flex;
         list-style: none;
         margin: 0;
         padding: 0;
-        border-bottom: 2px solid #e0e0e0;
+        /* 下線の代わりに背景グラデーションを利用 */
         background: linear-gradient(90deg, #f8f8f8, #eaeaea);
     }
 
     &__item {
         padding: 15px 25px;
         cursor: pointer;
-        border: 2px solid transparent;
-        border-bottom: none;
-        transition:
-            background-color 0.3s,
-            color 0.3s,
-            border-color 0.3s;
+        transition: color 0.3s;
         font-weight: 500;
         color: #555;
 
         &:hover {
-            background-color: #f0f0f0;
             color: #333;
         }
+    }
 
-        &--active {
-            color: #222;
-            border-color: #e0e0e0;
-            border-bottom-color: #fff;
-            background-color: #fff;
-            box-shadow: inset 0 -3px 0 #ff9800;
-        }
+    // active 状態は文字色のみで表現（アンダーラインは別要素で実現）
+    &__item--active {
+        color: #222;
+    }
+
+    // アンダーライン用の要素
+    &__underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background-color: #ff9800;
+        transition:
+            left 0.3s ease,
+            width 0.3s ease;
     }
 
     &__content {
