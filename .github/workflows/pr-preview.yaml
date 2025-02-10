@@ -1,0 +1,95 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+    steps:
+      # 1. コードをチェックアウト
+      - uses: actions/checkout@v3
+
+      # 2. Node.js のセットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.12.2'
+
+      # 3. 依存関係のインストール
+      - name: Install dependencies
+        run: npm install
+
+      # 4. ビルド（npm run build で dist を生成）
+      - name: Build project
+        run: npm run build
+
+      # 5. GitHub Pages へのデプロイ
+      - name: Deploy to GitHub Pages (Preview)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          destination_dir: pr-${{ github.event.pull_request.number }}
+
+      # 6. プレビュー URL の生成（出力）
+      - name: Set preview URL
+        id: preview_url
+        run: |
+          echo "PREVIEW_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+
+      # 7. PR コメントの投稿または更新
+      - name: Post or update PR comment with preview URL and commit link
+        uses: actions/github-script@v6
+        with:
+          script: |
+            // プレビュー URL を環境変数から取得
+            const previewUrl = process.env.PREVIEW_URL;
+            // マーカー（既存コメントの判定用）
+            const marker = '<!-- preview-url -->';
+
+            // PR イベントの場合、最新のコミット SHA を取得
+            const commitSha = context.payload.pull_request
+              ? context.payload.pull_request.head.sha
+              : context.sha;
+            // コミットへのリンクを生成（先頭7文字を表示用とする）
+            const commitShort = commitSha.substring(0, 7);
+            const commitLink = `https://github.com/${context.repo.owner}/${context.repo.repo}/commit/${commitSha}`;
+
+            // コメント本文を生成：プレビュー URL とコミットへのリンクを追加
+            const commentBody = `${marker}\n**最新のデプロイ先はこちらです:** [${previewUrl}](${previewUrl})\n**対応コミット:** [${commitShort}](${commitLink})`;
+
+            // PR のコメント一覧を取得
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            // marker を含む既存のコメントを探す
+            const existingComment = comments.find(comment => comment.body && comment.body.includes(marker));
+
+            if (existingComment) {
+              // 既存コメントがあれば更新
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: commentBody
+              });
+            } else {
+              // 存在しなければ新規作成
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+            }
+        env:
+          PREVIEW_URL: ${{ steps.preview_url.outputs.PREVIEW_URL }}
