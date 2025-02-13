@@ -1,0 +1,69 @@
+.slide-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    z-index: 1000;
+
+    &--active {
+        right: 0;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 60px 0 0;
+        padding: 0;
+    }
+
+    &__link {
+        display: block;
+        padding: 15px;
+        color: #333;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border: none;
+        background: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        z-index: 900;
+
+        &--active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__toggle {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007BFF;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
+}
