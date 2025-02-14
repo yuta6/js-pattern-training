@@ -7,22 +7,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 1rem;
-    overflow: hidden;
     background-color: #fff;
-    transition: box-shadow 0.3s ease;
-
-    &[open] {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-      // open時のアコーディオン内容と summary アイコンの調整
-      .accordion__content {
-        padding: 1rem;
-        max-height: 500px;
-      }
-      .accordion__summary::after {
-        transform: translateY(-50%) rotate(180deg);
-      }
-    }
   }
 
   &__summary {
@@ -30,17 +15,11 @@
     padding: 1rem;
     cursor: pointer;
     position: relative;
-    font-size: 1.1rem;
     font-weight: bold;
     background-color: #f9f9f9;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #ececec;
-    }
 
     &::after {
-      content: '▼';
+      content: "▼";
       position: absolute;
       right: 1rem;
       top: 50%;
@@ -50,10 +29,17 @@
   }
 
   &__content {
-    padding: 0 1rem;
-    background-color: #fff;
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease;
+  }
+
+  &__contentInner {
+    padding: 1rem;
+  }
+
+  // open状態の制御
+  &__item[open] {
+    .accordion__summary::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
   }
 }
