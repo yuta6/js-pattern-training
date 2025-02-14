@@ -7,25 +7,23 @@
     <link rel="stylesheet" href="./scss/main.scss">
 </head>
 <body>
-    <header>
-        <h1>UIコンポーネント実装パターン集</h1>
-        <nav>
-            <ul>
-                <li><a href="#accordion">アコーディオン</a></li>
-                <li><a href="#modal">モーダル</a></li>
-                <li><a href="#tab">タブ</a></li>
-                <li><a href="#carousel">カルーセル</a></li>
-                <li><a href="#dropdown">ドロップダウンメニュー</a></li>
-                <li><a href="#slide-menu">スライドメニュー</a></li>
-                <li><a href="#popup-menu">ポップアップメニュー</a></li>
-                <li><a href="#tooltip">ツールチップ</a></li>
+    <header class="header">
+        <h1 class="header__title">UIコンポーネント実装パターン集</h1>
+    </header>
+    <main class="main">
+        <nav class="article-menu">
+            <ul class="article-menu-list">
+                <li class="article-menu-item"><a href="#accordion" class="article-menu-link">アコーディオン</a></li>
+                <li class="article-menu-item"><a href="#modal" class="article-menu-link">モーダル</a></li>
+                <li class="article-menu-item"><a href="#tab" class="article-menu-link">タブ</a></li>
+                <li class="article-menu-item"><a href="#carousel" class="article-menu-link">カルーセル</a></li>
+                <li class="article-menu-item"><a href="#dropdown" class="article-menu-link">ドロップダウンメニュー</a></li>
+                <li class="article-menu-item"><a href="#slide-menu" class="article-menu-link">スライドメニュー</a></li>
             </ul>
         </nav>
-    </header>
-    <main>
-        <section id="accordion">
-            <h2>アコーディオン</h2>
-            <p>アコーディオンの説明と実装例。</p>
+        <section id="accordion" class="accordion">
+            <h2 class="accordion__title">アコーディオン</h2>
+            <p class="accordion__description">アコーディオンの説明と実装例。</p>
             <!-- アコーディオンのデモとコード -->
             <div class="accordion__container">
                 <details class="accordion__item" data-accordion-item>
@@ -51,46 +49,34 @@
             </div>
         </section>
 
-        <section id="modal">
-            <h2>モーダル</h2>
-            <p>モーダルウィンドウの説明と実装例。</p>
+        <section id="modal" class="modal">
+            <h2 class="modal__title">モーダル</h2>
+            <p class="modal__description">モーダルウィンドウの説明と実装例。</p>
             <!-- モーダルのデモとコード -->
         </section>
 
-        <section id="tab">
-            <h2>タブ</h2>
-            <p>タブの説明と実装例。</p>
+        <section id="tab" class="tab">
+            <h2 class="tab__title">タブ</h2>
+            <p class="tab__description">タブの説明と実装例。</p>
             <!-- タブのデモとコード -->
         </section>
 
-        <section id="carousel">
-            <h2>カルーセル</h2>
-            <p>カルーセルの説明と実装例。</p>
+        <section id="carousel" class="carousel">
+            <h2 class="carousel__title">カルーセル</h2>
+            <p class="carousel__description">カルーセルの説明と実装例。</p>
             <!-- カルーセルのデモとコード -->
         </section>
 
-        <section id="dropdown">
-            <h2>ドロップダウンメニュー</h2>
-            <p>ドロップダウンメニューの説明と実装例。</p>
+        <section id="dropdown" class="dropdown">
+            <h2 class="dropdown__title">ドロップダウンメニュー</h2>
+            <p class="dropdown__description">ドロップダウンメニューの説明と実装例。</p>
             <!-- ドロップダウンメニューのデモとコード -->
         </section>
 
-        <section id="slide-menu">
-            <h2>スライドメニュー</h2>
-            <p>スライドメニューの説明と実装例。</p>
+        <section id="slide-menu" class="slide-menu">
+            <h2 class="slide-menu__title">スライドメニュー</h2>
+            <p class="slide-menu__description">スライドメニューの説明と実装例。</p>
             <!-- スライドメニューのデモとコード -->
-        </section>
-
-        <section id="popup-menu">
-            <h2>ポップアップメニュー</h2>
-            <p>ポップアップメニューの説明と実装例。</p>
-            <!-- ポップアップメニューのデモとコード -->
-        </section>
-
-        <section id="tooltip">
-            <h2>ツールチップ</h2>
-            <p>ツールチップの説明と実装例。</p>
-            <!-- ツールチップのデモとコード -->
         </section>
     </main>
     <script type="module" src="./js/main.js"></script>
