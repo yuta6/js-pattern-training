@@ -55,6 +55,35 @@
             <h2 class="slide-menu__title">スライドメニュー</h2>
             <p class="slide-menu__description">スライドメニューの説明と実装例。</p>
             <!-- スライドメニューのデモとコード -->
+             <!-- メニューを開くトグルボタン -->
+            <button class="menu__toggle" data-slide-menu-toggle>
+                メニューを開く
+            </button>
+
+            <!-- スライドメニュー本体 -->
+            <nav class="menu" data-slide-menu>
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a href="#accordion" class="menu__link">アコーディオン</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#modal" class="menu__link">モーダル</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#tab" class="menu__link">タブ</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#carousel" class="menu__link">カルーセル</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#dropdown" class="menu__link">ドロップダウンメニュー</a>
+                    </li>
+                </ul>
+                <!-- メニューを閉じるボタン -->
+                <button class="menu__close" data-slide-menu-close>
+                ×
+                </button>
+            </nav>
         </section>
     </main>
     <script type="module" src="./js/main.js"></script>
