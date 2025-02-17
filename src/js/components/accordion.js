@@ -19,6 +19,11 @@ export const accordion = () => {
         const trigger = item.querySelector("[data-accordion-summary]");
         const target = item.querySelector("[data-accordion-content]");
 
+        if (!trigger || !target) {
+            console.warn(' "data-accordion-summary"や"data-accordion-content"をもつ要素が必要です', item);
+            return;
+        }
+
         trigger.addEventListener("click", (e) => {
             e.preventDefault();
 
