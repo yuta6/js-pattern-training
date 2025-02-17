@@ -5,13 +5,13 @@ export const slideMenu = () => {
     const overlay = document.querySelector('[data-slide-menu-overlay]');
 
     const openMenu = () => {
-        slideMenu.classList.add('menu--active');
-        overlay.classList.add('menu__overlay--active');
+        slideMenu.classList.add('slide-menu--active');
+        overlay.classList.add('slide-menu__overlay--active');
     };
 
     const closeMenu = () => {
-        slideMenu.classList.remove('menu--active');
-        overlay.classList.remove('menu__overlay--active');
+        slideMenu.classList.remove('slide-menu--active');
+        overlay.classList.remove('slide-menu__overlay--active');
     };
 
     toggleButton.addEventListener('click', openMenu);
