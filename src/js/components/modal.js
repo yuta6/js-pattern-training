@@ -1,23 +1,23 @@
 export const modal = () => {
-    const modalTrigger = document.querySelector("[data-modal-trigger]");
-    const modal = document.querySelector("[data-modal]");
+    const modalTriggers = document.querySelectorAll("[data-modal-trigger]");
 
-    if (!modalTrigger || !modal) return;
-    modalTrigger.addEventListener("click", () => {
-        modal.showModal();
-    });
+    modalTriggers.forEach((trigger) => {
+        const modal = document.querySelector(`[data-modal-id="${trigger.dataset.modalTrigger}"]`);
+        if (!modal)return;
 
-    const closeButton = modal.querySelector("[data-modal-close]");
-
-    if (closeButton) {
-        closeButton.addEventListener("click", () => {
-            modal.close();
+        trigger.addEventListener("click", () => {
+            modal.showModal();
         });
-    }
-
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            modal.close();
+        const closeButton = modal.querySelector("[data-modal-close]");
+        if (closeButton) {
+            closeButton.addEventListener("click", () => {
+                modal.close();
+            });
         }
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.close();
+            }
+        });
     });
 };
