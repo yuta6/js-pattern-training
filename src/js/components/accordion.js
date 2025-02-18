@@ -27,16 +27,16 @@ export const accordion = () => {
         trigger.addEventListener("click", (e) => {
             e.preventDefault();
 
-            if (item.hasAttribute("open")) {
+            if (item.open === true) {
                 const closingAnim = target.animate(
                     closingAnimKeyframes(target),
                     animTiming
                 );
                 closingAnim.onfinish = () => {
-                    item.removeAttribute("open");
+                    item.open = false;
                 };
             } else {
-                item.setAttribute("open", "true");
+                item.open = true;
                 const openingAnim = target.animate(
                     openingAnimKeyframes(target),
                     animTiming
