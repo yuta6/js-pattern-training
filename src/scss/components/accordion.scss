@@ -23,6 +23,10 @@
       top: 50%;
       transform: translateY(-50%);
       transition: transform 0.3s ease;
+
+      .accordion__item[open] & {
+        transform: translateY(-50%) rotate(180deg);
+      }
     }
   }
 
@@ -32,12 +36,5 @@
 
   &__contentInner {
     padding: 1rem;
-  }
-
-  // open状態の制御
-  &__item[open] {
-    .accordion__summary::after {
-      transform: translateY(-50%) rotate(180deg);
-    }
   }
 }
