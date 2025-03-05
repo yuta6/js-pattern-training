@@ -8,12 +8,14 @@ export const modal = () => {
         trigger.addEventListener("click", () => {
             modal.showModal();
         });
+
         const closeButton = modal.querySelector("[data-modal-close]");
-        if (closeButton) {
-            closeButton.addEventListener("click", () => {
-                modal.close();
-            });
-        }
+        if (!closeButton) return;
+
+        closeButton.addEventListener("click", () => {
+            modal.close();
+        });
+
         modal.addEventListener("click", (event) => {
             if (event.target === modal) {
                 modal.close();
