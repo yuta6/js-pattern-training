@@ -31,6 +31,19 @@
             <h2 class="sec__title">モーダル</h2>
             <p class="sec__description">モーダルウィンドウの説明と実装例。</p>
             <!-- モーダルのデモとコード -->
+            <!-- モーダルを開くためのボタン -->
+            <button type="button" class="modalTrigger" data-modal-trigger="demo">
+                ドキドキの扉はこちら！
+            </button>
+
+            <!-- モーダル本体 -->
+            <dialog class="modal" data-modal-id="demo">
+                <div class="modal__content">
+                    <button type="button" class="modal__close" data-modal-close>&times;</button>
+                    <h3 class="modal__title">ここから物語が始まる…！？</h3>
+                    <p class="modal__text">…でも実は、この先に秘密が隠されているとかいないとか。</p>
+                </div>
+            </dialog>
         </section>
 
         <section id="tab" class="sec">
