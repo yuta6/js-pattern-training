@@ -27,7 +27,7 @@ export const accordion = () => {
         trigger.addEventListener("click", (e) => {
             e.preventDefault();
 
-            let isOpen = item.open;
+            const isOpen = item.open;
             if (isOpen) {
                 const closingAnim = target.animate(
                     closingAnimKeyframes(target),
