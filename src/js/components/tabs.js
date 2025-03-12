@@ -4,7 +4,7 @@ export const tabs = () => {
 
     // タブナビゲーションラッパー（アンダーラインの親要素）
     const navWrapper = tabContainer.querySelector("[data-tab-nav]");
-    const tabItems = tabContainer.querySelectorAll("[data-tab-item]");
+    const tabItems = tabContainer.querySelectorAll("[data-tab-target]");
     const tabPanels = tabContainer.querySelectorAll("[data-tab-panel]");
     const underline = tabContainer.querySelector(".tab__underline");
 
