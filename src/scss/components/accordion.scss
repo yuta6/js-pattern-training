@@ -1,0 +1,40 @@
+.accordion {
+  margin: 1.5rem 0;
+
+  &__item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background-color: #fff;
+  }
+
+  &__summary {
+    list-style: none;
+    padding: 1rem;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+    background-color: #f9f9f9;
+
+    &::after {
+      content: "▼";
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+
+      .accordion__item[open] & {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+
+  &__contentInner {
+    padding: 1rem;
+  }
+}
