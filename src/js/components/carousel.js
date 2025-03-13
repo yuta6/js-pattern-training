@@ -3,7 +3,7 @@ export const carousel = () => {
   const carousels = document.querySelectorAll('[data-carousel]');
 
   carousels.forEach(carousel => {
-    const viewport = carousel.querySelector('.carousel__viewport');
+    const viewport = carousel.querySelector('[data-carousel-viewport]');
     const slides = carousel.querySelectorAll('[data-carousel-slide]');
     const btnPrev = carousel.querySelector('[data-carousel-button="prev"]');
     const btnNext = carousel.querySelector('[data-carousel-button="next"]');
