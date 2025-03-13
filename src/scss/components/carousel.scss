@@ -5,7 +5,7 @@
     &__viewport {
         display: flex;
         transition: transform 0.5s ease;
-        height: 500px; 
+        height: 500px;
     }
 
     &__slide {
@@ -41,6 +41,28 @@
 
         &--next {
             right: 1rem;
+        }
+    }
+
+    &__dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    &__dot {
+        width: 10px;
+        height: 10px;
+        border: none;
+        border-radius: 50%;
+        background-color: #ccc;
+        padding: 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &--active {
+            background-color: #333;
         }
     }
 }

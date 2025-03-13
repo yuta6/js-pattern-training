@@ -7,13 +7,25 @@ export const carousel = () => {
     const slides = carousel.querySelectorAll('[data-carousel-slide]');
     const btnPrev = carousel.querySelector('[data-carousel-button="prev"]');
     const btnNext = carousel.querySelector('[data-carousel-button="next"]');
+    const dots = carousel.querySelectorAll('[data-carousel-dot]');
 
     let currentIndex = 0;
 
     // カルーセルの表示を更新する関数
-    function updateCarousel() {
+    const updateCarousel = () => {
       // 現在のインデックスに合わせて viewport を左にシフト（100%ずつ）
-      viewport.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      viewport.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      // ドットの状態を更新
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.add('carousel__dot--active');
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.classList.remove('carousel__dot--active');
+          dot.removeAttribute('aria-current');
+        }
+      });
     }
 
     // 「前へ」ボタンのクリックイベント
@@ -26,6 +38,13 @@ export const carousel = () => {
     btnNext.addEventListener('click', () => {
       currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
       updateCarousel();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel();
+      });
     });
   });
 }
