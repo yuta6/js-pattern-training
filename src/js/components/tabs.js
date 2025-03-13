@@ -28,8 +28,11 @@ export const tabs = () => {
     tabItems.forEach((item) => {
         item.addEventListener("click", () => {
             // すべてのタブから active クラスを削除し、クリックされたタブに付与
-            tabItems.forEach((i) => i.classList.remove("tab__item--active"));
-            item.classList.add("tab__item--active");
+            tabItems.forEach((tab) => {
+                const isActive = tab === item;
+                tab.classList.toggle("tab__item--active", isActive);
+            });
+
 
             // 対応するパネルの表示切替
             const target = item.getAttribute("data-tab-target");
