@@ -8,9 +8,10 @@ export const tabs = () => {
     const tabPanels = tabContainer.querySelectorAll("[data-tab-panel]");
     const underline = tabContainer.querySelector("[data-tab-underline]");
 
+    const tabActiveClassName = "tab__item--active";
     // アンダーラインの位置・幅を更新する関数
     const updateUnderline = () => {
-        const activeTab = tabContainer.querySelector(".tab__item--active");
+        const activeTab = tabContainer.querySelector("."+tabActiveClassName);
         if (!activeTab || !underline) return;
         const navRect = navWrapper.getBoundingClientRect();
         const activeRect = activeTab.getBoundingClientRect();
@@ -30,7 +31,7 @@ export const tabs = () => {
             // すべてのタブから active クラスを削除し、クリックされたタブに付与
             tabItems.forEach((tab) => {
                 const isActive = tab === item;
-                tab.classList.toggle("tab__item--active", isActive);
+                tab.classList.toggle(tabActiveClassName, isActive);
             });
 
 
