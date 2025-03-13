@@ -47,14 +47,14 @@
             width 0.3s ease;
     }
 
-    &__content {
+    &__panel {
         padding: 25px;
         border: 2px solid #e0e0e0;
         border-top: none;
         animation: fadeIn 0.3s ease;
     }
 
-    &__panel {
+    &__content {
         display: none;
         font-size: 1rem;
         line-height: 1.6;

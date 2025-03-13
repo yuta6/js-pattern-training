@@ -5,7 +5,7 @@ export const tabs = () => {
     // タブナビゲーションラッパー（アンダーラインの親要素）
     const navWrapper = tabContainer.querySelector("[data-tab-nav]");
     const tabItems = tabContainer.querySelectorAll("[data-tab-target]");
-    const tabPanels = tabContainer.querySelectorAll("[data-tab-panel]");
+    const tabPanels = tabContainer.querySelectorAll("[data-tab-content]");
     const underline = tabContainer.querySelector("[data-tab-underline]");
 
     const tabActiveClassName = "tab__item--active";
@@ -38,13 +38,13 @@ export const tabs = () => {
             // 対応するパネルの表示切替
             const targetId = item.getAttribute("data-tab-target");
             tabPanels.forEach((panel) =>
-                panel.classList.remove("tab__panel--active")
+                panel.classList.remove("tab__content--active")
             );
             const targetPanel = tabContainer.querySelector(
-                `[data-tab-panel="${targetId}"]`
+                `[data-tab-content="${targetId}"]`
             );
             if (targetPanel) {
-                targetPanel.classList.add("tab__panel--active");
+                targetPanel.classList.add("tab__content--active");
             }
 
             updateUnderline();
