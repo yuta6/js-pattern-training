@@ -1,0 +1,77 @@
+.tab {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    // タブナビゲーション全体を包含するラッパー
+    &__navWrapper {
+        position: relative;
+    }
+
+    &__nav {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        /* 下線の代わりに背景グラデーションを利用 */
+        background: linear-gradient(90deg, #f8f8f8, #eaeaea);
+    }
+
+    &__item {
+        padding: 15px 25px;
+        cursor: pointer;
+        transition: color 0.3s;
+        font-weight: 500;
+        color: #555;
+
+        &:hover {
+            color: #333;
+        }
+    }
+
+    // active 状態は文字色のみで表現（アンダーラインは別要素で実現）
+    &__item {
+        &--active {
+            color: #222;
+        }
+    }
+
+    // アンダーライン用の要素
+    &__underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background-color: #ff9800;
+        transition:
+            left 0.3s ease,
+            width 0.3s ease;
+    }
+
+    &__panel {
+        padding: 25px;
+        border: 2px solid #e0e0e0;
+        border-top: none;
+        animation: fadeIn 0.3s ease;
+    }
+
+    &__content {
+        display: none;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #444;
+
+        &--active {
+            display: block;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
