@@ -6,7 +6,7 @@ export const tabs = () => {
     const navWrapper = tabContainer.querySelector("[data-tab-nav]");
     const tabItems = tabContainer.querySelectorAll("[data-tab-target]");
     const tabPanels = tabContainer.querySelectorAll("[data-tab-panel]");
-    const underline = tabContainer.querySelector(".tab__underline");
+    const underline = tabContainer.querySelector("[data-tab-underline]");
 
     // アンダーラインの位置・幅を更新する関数
     const updateUnderline = () => {
@@ -43,7 +43,6 @@ export const tabs = () => {
                 targetPanel.classList.add("tab__panel--active");
             }
 
-            // アンダーラインの位置を更新（アニメーションで移動）
             updateUnderline();
         });
     });
