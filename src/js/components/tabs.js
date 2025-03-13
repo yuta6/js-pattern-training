@@ -36,12 +36,12 @@ export const tabs = () => {
 
 
             // 対応するパネルの表示切替
-            const target = item.getAttribute("data-tab-target");
+            const targetId = item.getAttribute("data-tab-target");
             tabPanels.forEach((panel) =>
                 panel.classList.remove("tab__panel--active")
             );
             const targetPanel = tabContainer.querySelector(
-                `[data-tab-panel="${target}"]`
+                `[data-tab-panel="${targetId}"]`
             );
             if (targetPanel) {
                 targetPanel.classList.add("tab__panel--active");
